@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ai_text_completion_project.iml" filepath="$PROJECT_DIR$/ai_text_completion_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ai-text-completion-project.iml" filepath="$PROJECT_DIR$/ai-text-completion-project.iml" />
     </modules>
   </component>
 </project>
