@@ -1,18 +1,18 @@
-import openai
 import os
+import openai
 
-# Load your API key securely
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Recommended: store it in your system environment variables
+# Set your API key
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_text(prompt, temperature=0.7, max_tokens=100):
     try:
-        response = openai.Completion.create(
-            engine="gpt-3.5-turbo",  # or "gpt-3.5-turbo" with chat API
-            prompt=prompt,
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
             temperature=temperature,
             max_tokens=max_tokens
         )
-        return response.choices[0].text.strip()
+        return response.choices[0].message.content.strip()
     except Exception as e:
         return f"Error: {e}"
 
@@ -29,7 +29,6 @@ def main():
         temperature = input("Temperature (0.0–1.0, default=0.7): ").strip()
         max_tokens = input("Max tokens (default=100): ").strip()
 
-        # Convert to float/int with defaults
         try:
             temperature = float(temperature) if temperature else 0.7
         except:
